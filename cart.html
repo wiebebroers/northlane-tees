@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Winkelwagen | NorthLane Tees</title>
+  <meta name="description" content="NorthLane Tees – streetwear T-shirts: basic, oversized en prints. Betaalbaar en modern.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="logo"></span><span>NorthLane Tees</span></a>
+    <div class="menu">
+      <a href="index.html" >Home</a>
+      <a href="shop.html" >Shop</a>
+      <a href="over.html" >Over ons</a>
+      <a href="faq.html" >FAQ & Retour</a>
+      <a href="contact.html" >Contact</a>
+      <a class="cta" href="cart.html">Winkelwagen <span data-cart-count style="display:none;margin-left:8px;background:rgba(255,255,255,.18);padding:2px 8px;border-radius:999px;font-weight:900"></span></a>
+    </div>
+  </div>
+</div>
+
+
+<section class="section">
+  <div class="container">
+    <div class="h2">Winkelwagen</div>
+    <div class="row">
+      <div class="card" style="padding:16px">
+        <div id="cartItems"></div>
+        <hr>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+          <div style="font-weight:900">Totaal: <span id="cartTotal">€0,00</span></div>
+          <button class="btn btn-primary" onclick="checkout()">Afrekenen (demo)</button>
+        </div>
+        <p><small>Afrekenen is een demo. Voor school is het genoeg dat de flow zichtbaar is.</small></p>
+      </div>
+      <div class="card" style="padding:16px;background:rgba(255,255,255,.02)">
+        <div style="font-weight:900;font-size:18px;margin-bottom:10px">Betaal- en verzendinfo</div>
+        <p class="p">In een echte webshop kun je iDEAL/PayPal koppelen en verzendopties instellen (PostNL/DHL). Voor deze demo laat je zien hoe het proces eruitziet.</p>
+        <p class="p" style="margin-bottom:0"><strong>Tip:</strong> zet een screenshot van deze pagina in je inlevering als bewijs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function renderCart(){
+  const items = readCart();
+  const wrap = document.getElementById("cartItems");
+  if(!wrap) return;
+  if(items.length === 0){
+    wrap.innerHTML = '<p class="p">Je winkelwagen is leeg. <a class="cta" href="shop.html">Shop verder</a></p>';
+    document.getElementById("cartTotal").textContent = euro(0);
+    return;
+  }
+  wrap.innerHTML = items.map(i => `
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)">
+      <div>
+        <div style="font-weight:900">${i.name}</div>
+        <div style="color:var(--muted);margin-top:4px">${euro(i.price)} • ${i.qty}x</div>
+        <div class="btns" style="margin-top:10px">
+          <button class="btn" onclick="changeQty('${i.id}', -1)">-</button>
+          <button class="btn" onclick="changeQty('${i.id}', 1)">+</button>
+          <button class="btn" onclick="removeFromCart('${i.id}')">Verwijderen</button>
+        </div>
+      </div>
+      <div style="font-weight:900">${euro(i.price * i.qty)}</div>
+    </div>
+  `).join("");
+  document.getElementById("cartTotal").textContent = euro(cartTotal());
+}
+function checkout(){
+  if(cartCount() === 0){ toast("Je winkelwagen is leeg"); return; }
+  toast("Bestelling geplaatst (demo)");
+  writeCart([]);
+  renderCart();
+}
+document.addEventListener("DOMContentLoaded", renderCart);
+</script>
+
+
+<div class="footer">
+  <div class="container" style="padding-top:0">
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>© 2026 NorthLane Tees • Schoolproject (MBO 4)</div>
+      <div><a href="faq.html">Retour & voorwaarden</a> • <a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

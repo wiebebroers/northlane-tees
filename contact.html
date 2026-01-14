@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | NorthLane Tees</title>
+  <meta name="description" content="NorthLane Tees – streetwear T-shirts: basic, oversized en prints. Betaalbaar en modern.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="logo"></span><span>NorthLane Tees</span></a>
+    <div class="menu">
+      <a href="index.html" >Home</a>
+      <a href="shop.html" >Shop</a>
+      <a href="over.html" >Over ons</a>
+      <a href="faq.html" >FAQ & Retour</a>
+      <a href="contact.html" style="color:var(--text)">Contact</a>
+      <a class="cta" href="cart.html">Winkelwagen <span data-cart-count style="display:none;margin-left:8px;background:rgba(255,255,255,.18);padding:2px 8px;border-radius:999px;font-weight:900"></span></a>
+    </div>
+  </div>
+</div>
+
+
+<section class="section">
+  <div class="container">
+    <div class="h2">Contact</div>
+    <div class="row">
+      <div class="card form">
+        <p class="p">Heb je een vraag over maat, bestelling of retour? Stuur een bericht. (Formulier is demo: er wordt niets verstuurd.)</p>
+        <form onsubmit="event.preventDefault(); toast('Bericht verzonden (demo)'); this.reset();">
+          <label>Naam</label>
+          <input required placeholder="Bijv. Wiebe">
+          <label>E-mail</label>
+          <input type="email" required placeholder="naam@example.com">
+          <label>Bericht</label>
+          <textarea rows="5" required placeholder="Typ je vraag..."></textarea>
+          <div class="btns" style="margin-top:12px">
+            <button class="btn btn-primary" type="submit">Versturen</button>
+            <a class="btn" href="faq.html">Bekijk FAQ</a>
+          </div>
+          <p><small>Reactietijd: binnen 24 uur (voorbeeld).</small></p>
+        </form>
+      </div>
+
+      <div class="card" style="padding:16px;background:rgba(255,255,255,.02)">
+        <div style="font-weight:900;font-size:18px;margin-bottom:10px">Contactgegevens</div>
+        <p class="p"><strong>E-mail:</strong> northlane-tees@schoolmail.nl</p>
+        <p class="p"><strong>Instagram:</strong> @northlanetees (demo)</p>
+        <p class="p" style="margin-bottom:0"><strong>Adres:</strong> Online-only (geen winkel)</p>
+        <hr>
+        <div class="notice">
+          <strong>Voor je opdracht:</strong> in je verslag kun je noemen dat je klantenservice via DM’s doet en ordervragen via e-mail.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="footer">
+  <div class="container" style="padding-top:0">
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>© 2026 NorthLane Tees • Schoolproject (MBO 4)</div>
+      <div><a href="faq.html">Retour & voorwaarden</a> • <a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
